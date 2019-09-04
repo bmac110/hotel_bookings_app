@@ -28,7 +28,7 @@ export default {
     return {
       name: "",
       email: "",
-      status: ""
+      status: false
     }
   },
   methods: {

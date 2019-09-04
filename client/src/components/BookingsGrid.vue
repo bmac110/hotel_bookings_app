@@ -1,11 +1,12 @@
 <template lang="html">
   <div id="bookingsGrid">
     <div class="booking" v-for="booking in bookings">
-      <h2>{{booking.name}}</h2>
-      <p>{{booking.email}}</p>
-      <p>{{booking.status}}</p>
+      <h2>Guest Name: {{booking.name}}</h2>
+      <p>Email: {{booking.email}}</p>
+      <p>Check-in Status: {{booking.status}}</p>
 
       <button @click = "handleClick(booking._id)">Delete Booking</button>
+      <!-- <button @click = "handleCheckInClick">Check-in Status</button> -->
     </div>
   </div>
 </template>
@@ -23,7 +24,10 @@ export default {
       .then(() => {
         eventBus.$emit('booking-deleted', id)
       })
-    }
+    },
+    // handleCheckInClick() {
+    //
+    // }
   }
 }
 </script>
