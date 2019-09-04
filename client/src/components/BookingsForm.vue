@@ -32,15 +32,15 @@ export default {
     }
   },
   methods: {
-    addBooking(booking) {
-      booking.preventDefault()
-      const guestBooking = {
+    addBooking(b) {
+      b.preventDefault()
+      const booking = {
         name: this.name,
         email: this.email,
         status: this.status
       }
       BookingsService.postBooking(booking)
-      .then( res =>eventBus.$emit('booking-added', res))
+      .then( res => eventBus.$emit('booking-added', res))
     }
   }
 }
