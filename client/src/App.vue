@@ -33,7 +33,7 @@ export default {
     })
 
     eventBus.$on('booking-deleted', (id) => {
-      let index = this.bookings.findIndex(booking => booking._id === booking)
+      let index = this.bookings.findIndex(booking => booking._id === id)
       this.bookings.splice(index, 1)
     })
   },
