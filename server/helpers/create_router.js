@@ -35,11 +35,15 @@ const createRouter = function (collection) {
       res.json({ status: 500, error: err });
     });
   });
-  //DESTROY
-  router.delete('/:id', (req, res) => {
+  router.put('/:id', (req, res) => {
     const id = req.params.id;
-    collection.deleteOne({ _id: ObjectID(id) })
-    .then(result => res.json(result));
+    const updateBooking = req.body;
+    collection.findOneAndUpdate(
+      { _id: ObjectID(id)},
+      {$set: updateBooking},
+      {returnOriginal: false}
+    )
+    .then(result => res.json(result.value))
   });
 
   return router;
