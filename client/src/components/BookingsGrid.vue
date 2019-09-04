@@ -6,7 +6,8 @@
       <p>Check-in Status: {{booking.status}}</p>
 
       <button @click = "handleClick(booking._id)">Delete Booking</button>
-      <button @click = "handleCheckInClick()">Check-in Status</button>
+      <button  v-if="!booking.status" @click = "handleCheckInClick(booking)">Check-in </button>
+      <button v-if="booking.status" @click = "handleCheckInClick(booking)">Check out</button>
     </div>
   </div>
 </template>
@@ -25,11 +26,11 @@ export default {
         eventBus.$emit('booking-deleted', id)
       })
     },
-    handleCheckInClick(id) {
-      BookingsService.updateBooking(id)
-      .then(() => {
-        eventBus.$emit('booking-updated', id)
-      })
+    handleCheckInClick(booking) {
+      const bookingID = booking._id;
+      booking.status = !booking.status
+      const bookingStatus = {status: booking.status};
+      BookingsService.updateBooking(bookingID, bookingStatus)
     }
   }
 }
