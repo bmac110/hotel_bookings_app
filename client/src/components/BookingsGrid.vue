@@ -6,7 +6,7 @@
       <p>Check-in Status: {{booking.status}}</p>
 
       <button @click = "handleClick(booking._id)">Delete Booking</button>
-      <!-- <button @click = "handleCheckInClick">Check-in Status</button> -->
+      <button @click = "handleCheckInClick()">Check-in Status</button>
     </div>
   </div>
 </template>
@@ -25,9 +25,12 @@ export default {
         eventBus.$emit('booking-deleted', id)
       })
     },
-    // handleCheckInClick() {
-    //
-    // }
+    handleCheckInClick(id) {
+      BookingsService.updateBooking(id)
+      .then(() => {
+        eventBus.$emit('booking-updated', id)
+      })
+    }
   }
 }
 </script>
