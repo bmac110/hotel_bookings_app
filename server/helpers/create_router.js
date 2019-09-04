@@ -35,7 +35,7 @@ const createRouter = function (collection) {
       res.json({ status: 500, error: err });
     });
   });
-
+  //UPDATE
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updateBooking = req.body;
@@ -45,6 +45,12 @@ const createRouter = function (collection) {
       {returnOriginal: false}
     )
     .then(result => res.json(result.value))
+  });
+  //DELETE
+  router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    collection.deleteOne({ _id: ObjectID(id) })
+    .then(result => res.json(result));
   });
 
   return router;
