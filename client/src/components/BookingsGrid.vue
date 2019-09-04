@@ -2,7 +2,7 @@
   <div id="bookingsGrid">
     <div class="booking" v-for="booking in bookings">
       <h2>{{booking.name}}</h2>
-      <p>{{boking.email}}</p>
+      <p>{{booking.email}}</p>
       <p>{{booking.status}}</p>
 
       <button @click = "handleClick(booking._id)">Delete Booking</button>
