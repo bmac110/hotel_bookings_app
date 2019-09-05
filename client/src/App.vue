@@ -1,5 +1,6 @@
 <template lang="html">
 <div id="app">
+  <h1>Hotel Bookings</h1>
   <bookings-form />
   <bookings-grid :bookings="bookings" />
 </div>
@@ -47,5 +48,20 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style>
+
+body {
+  background-color: #B0E0E6;
+  font-family: 'Kanit', sans-serif;
+}
+
+#id {
+  display: flex;
+}
+
+h1 {
+  text-decoration: underline;
+  text-align: center;
+}
+
 </style>

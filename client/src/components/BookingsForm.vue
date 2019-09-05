@@ -41,10 +41,28 @@ export default {
       }
       BookingsService.postBooking(booking)
       .then( res => eventBus.$emit('booking-added', res))
+      this.name = this.email = "";
+      this.status = false;
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
+
+h2 {
+  text-decoration: underline;
+}
+
+#bookings-form {
+  border-style: none;
+}
+
+label {
+  display: flex;
+}
+
+.formWrap {
+  margin-bottom: 5px;
+}
 </style>
